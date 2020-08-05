@@ -19,6 +19,21 @@ export default function pageBuild() {
     navHome();
     ShowJams();
     navJams();
+    initMap();
+}
+
+function initMap(){
+    L.mapquest.key = 'lYrP4vF3Uk5zgTiGGuEzQGwGIVDGuy24';
+
+    var map = L.mapquest.map('map', {
+      center: [37.7749, -122.4194],
+      layers: L.mapquest.tileLayer('dark'),
+      zoom: 12
+    });
+
+    map.addControl(L.mapquest.control());
+
+
 }
 
 function navHome() {
