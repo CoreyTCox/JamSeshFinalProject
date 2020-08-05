@@ -14,27 +14,55 @@ import Map from "./components/map";
 
 const appDiv = document.querySelector('#app');
 
+let map;
+
 export default function pageBuild() {
     ShowProfiles();
     navHome();
     ShowJams();
     navJams();
     initMap();
+  
 }
 
 function initMap(){
-    L.mapquest.key = 'lYrP4vF3Uk5zgTiGGuEzQGwGIVDGuy24';
-
-    var map = L.mapquest.map('map', {
-      center: [37.7749, -122.4194],
-      layers: L.mapquest.tileLayer('dark'),
-      zoom: 12
-    });
-
-    map.addControl(L.mapquest.control());
-
+    L.mapquest.key = 'VsuVnXtbYj3jSMRxBJ9xTsd4MdCv4ieE';   
+      
 
 }
+
+
+function createMap(error, response) {
+    // var map = L.mapquest.map('map', {
+    //     layers: L.mapquest.tileLayer('map'),
+    //     center: [0, 0],
+    //     zoom: 12
+    //   });
+
+    var map = L.mapquest.map;
+      L.marker([41.130179, -81.853589], {
+        icon: L.mapquest.icons.marker(),
+        draggable: false
+      }).bindPopup('Jam Session 2dddd').addTo(map);
+  }
+
+  function generateMarkersFeatureGroup(response) {
+    var group = [];
+    for (var i = 0; i < response.results.length; i++) {
+      var location = response.results[i].locations[0];
+      var locationLatLng = location.latLng;
+
+      // Create a marker for each location
+      var marker = L.marker(locationLatLng, {icon: L.mapquest.icons.marker()})
+        .bindPopup(location.adminArea5 + ', ' + location.adminArea3);
+
+      group.push(marker);
+    }
+    return L.featureGroup(group);
+}
+
+
+
 
 function navHome() {
     const homeButton = document.querySelector('.nav__profiles');
