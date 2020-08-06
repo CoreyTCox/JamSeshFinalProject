@@ -10,11 +10,52 @@ import JamDetails from "./components/jamDetails";
 import JamPost from "./components/jamPost";
 import JamEdit from "./components/jamEdit";
 import ProfileLogin from "./components/profileLogin";
-import Map from "./components/map";
+
 
 const appDiv = document.querySelector('#app');
 
-let map;
+function initMap() {
+    
+    console.log("entered initmap");
+    let map = new google.maps.Map(document.getElementById("map"), {
+      center: {
+        lat: 41.140179,
+        lng: -81.863589
+      },
+      zoom: 12
+    });
+
+    const myLatLng = {
+        lat: 41.140179,
+        lng: -81.863589
+      };
+
+      const myLatLng2 = {
+        lat: 41.040179,
+        lng: -81.863589
+      };
+
+    new google.maps.Marker({
+        position: myLatLng,
+        map,
+        title: "Jam Session"
+      });
+
+      new google.maps.Marker({
+        position: myLatLng2,
+        map,
+        title: "Jam Session 2"
+      });
+    
+
+      var position1 = { lat: 41.040179, lng: -81.843589};
+      new google.maps.Marker({
+        position: position1,
+        map,
+        title: "Jam Session 3"
+      });
+     
+    }
 
 export default function pageBuild() {
     ShowProfiles();
@@ -22,44 +63,9 @@ export default function pageBuild() {
     ShowJams();
     navJams();
     initMap();
-  
+    
 }
 
-function initMap(){
-    L.mapquest.key = 'VsuVnXtbYj3jSMRxBJ9xTsd4MdCv4ieE';   
-      
-
-}
-
-
-function createMap(error, response) {
-    // var map = L.mapquest.map('map', {
-    //     layers: L.mapquest.tileLayer('map'),
-    //     center: [0, 0],
-    //     zoom: 12
-    //   });
-
-    var map = L.mapquest.map;
-      L.marker([41.130179, -81.853589], {
-        icon: L.mapquest.icons.marker(),
-        draggable: false
-      }).bindPopup('Jam Session 2dddd').addTo(map);
-  }
-
-  function generateMarkersFeatureGroup(response) {
-    var group = [];
-    for (var i = 0; i < response.results.length; i++) {
-      var location = response.results[i].locations[0];
-      var locationLatLng = location.latLng;
-
-      // Create a marker for each location
-      var marker = L.marker(locationLatLng, {icon: L.mapquest.icons.marker()})
-        .bindPopup(location.adminArea5 + ', ' + location.adminArea3);
-
-      group.push(marker);
-    }
-    return L.featureGroup(group);
-}
 
 
 
@@ -86,6 +92,8 @@ function ShowProfiles() {
 
         })
         .catch(err => console.log(err))
+
+       
 }
 
 function navJams() {
@@ -93,10 +101,13 @@ function navJams() {
     jamsButton.addEventListener('click', function () {
         appDiv.innerHTML = ShowJams();
     })
+
+    
 }
 
 function ShowJams() {
     console.log("jams");
+  
     fetch("https://localhost:44372/api/Jam")
         .then(response => response.json())
         .then(jams => {
@@ -105,6 +116,8 @@ function ShowJams() {
 
         })
         .catch(err => console.log(err))
+
+        
 }
 
 appDiv.addEventListener('click', function () {

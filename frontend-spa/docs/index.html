@@ -12,62 +12,16 @@
           <a class="nav__profiles" href="#">Profiles</a>
           <a id="0" class="nav__myprofile" href="#">My Profile</a>
         </div>
-    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
-
-    <script type="text/javascript">
-        window.onload = function() {
-          L.mapquest.key = 'VsuVnXtbYj3jSMRxBJ9xTsd4MdCv4ieE';
-
-          
-           // Geocode three locations, then call the createMap callback
-        L.mapquest.geocoding().geocode(['Fairlawn, OH', 'Brunswick, OH'], createMap);
-
-        function createMap(error, response) {
-          // Initialize the Map
-          var map = L.mapquest.map('map', {
-            layers: L.mapquest.tileLayer('map'),
-            center: [0, 0],
-            zoom: 12
-          });
-
-          // Generate the feature group containing markers from the geocoded locations
-          var featureGroup = generateMarkersFeatureGroup(response);
-
-          // Add markers to the map and zoom to the features
-          featureGroup.addTo(map);
-          map.fitBounds(featureGroup.getBounds());
-
-          L.marker([41.130179, -81.853589], {
-        icon: L.mapquest.icons.marker(),
-        draggable: false
-      }).bindPopup('Jam Session 2dddd').addTo(map);
-
-      
-        }
-
-        function generateMarkersFeatureGroup(response) {
-          var group = [];
-          for (var i = 0; i < response.results.length; i++) {
-            var location = response.results[i].locations[0];
-            var locationLatLng = location.latLng;
-
-            // Create a marker for each location
-            var marker = L.marker(locationLatLng, {icon: L.mapquest.icons.marker()})
-              .bindPopup(location.adminArea5 + ', ' + location.adminArea3);
-
-            group.push(marker);
-          }
-          return L.featureGroup(group);
-        }
-                   
-        };
-      </script>
-
-
+   
 </head>
 
 <body>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8RIP4S4yNnM_zR_Ge2-LhfpetIlnDxk8&callback=initMap&libraries=&v=weekly"></script>
+
+
+
     <div id="map" style="width: 100%; height: 400px;"></div>
     <div id="app"></div>
    
