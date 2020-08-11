@@ -241,12 +241,13 @@ appDiv.addEventListener("click", function () {
 
 appDiv.addEventListener('click', function () {
     if (event.target.classList.contains('profile-edit__button')) {
-        //const profileId = event.target.parentElement.querySelector('.profile__edit_button').id;
+        const editButtonId = document.querySelector('.profile-edit__button').id;
         const profileId = document.querySelector('.nav__myprofile').id;
-        if (profileId == "0") {
+        console.log("profileId is " + profileId + " editButtonId is " + editButtonId); 
+        if (profileId == "0" || profileId != editButtonId) {
             window.alert("not logged in")
         }
-        else {
+        else if (profileId == editButtonId){
 
             apiActions.getRequest(
                 `https://localhost:44372/api/Profile/${profileId}`,
@@ -284,13 +285,14 @@ appDiv.addEventListener('click', function () {
 
 appDiv.addEventListener('click', function () {
     if (event.target.classList.contains('delete-profile__button')) {
-        //const profileId = event.target.parentElement.querySelector('.delete-profile__button').id;
+        const deleteButtonId = document.querySelector('.delete-profile__button').id;
         const profileId = document.querySelector('.nav__myprofile').id;
+        //const navButtonId = document.querySelector('.nav__myprofile').id;
         const navButton = document.querySelector('.nav__myprofile');
-        if (profileId == "0") {
+        if (profileId == "0" || profileId != deleteButtonId) {
             window.alert("not logged in")
         }
-        else {
+        else if (profileId == deleteButtonId){
 
             const profileCallback = () => {
                 apiActions.getRequest(
