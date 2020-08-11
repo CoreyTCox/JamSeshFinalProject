@@ -323,6 +323,7 @@ appDiv.addEventListener('click', function () {
         apiActions.getRequest(
             `https://localhost:44372/api/Jam/${jamId}`,
             jam => {
+                console.log(jam);
                 appDiv.innerHTML = JamDetails(jam);
             }
         )
@@ -371,9 +372,9 @@ appDiv.addEventListener('click', function () {
         const jamId = event.target.parentElement.querySelector('.jam__edit_button').id;
         const profileId = document.querySelector('.nav__myprofile').id;
         //const jamProfileId = document.querySelector('jamProfile__name').id;
-        console.log("jamid is " + jamId + "profileId is " + profileId);
+        console.log("jamid is " + jamId + " profileId is " + profileId);
         if (profileId == "0" || profileId != jamId) {
-            window.alert("not logged in")
+            window.alert("access denied")
         }
         else {
 

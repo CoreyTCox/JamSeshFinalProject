@@ -6,11 +6,11 @@ export default function JamDetails(jam) {
     <h4><a class="jamdetails__name" id="${jam.jamId}" href="#"> <img src="images/jamphoto.png" alt="${jam.image}" width="200" height="200"></a></h4>
     <h4>Where: ${jam.location}</h4>
     <div>${jam.description}</div>
-    <h4>When: <input type="datetime-local" readonly="readonly" value="${jam.eventDate}"</h4>
+    <h4>When: <input type="datetime-local" readonly="readonly" value= moment(${jam.eventDate}).format("MM/DD/YYYY")</h4>
     <h4>Max Jammers Needed: ${jam.maxNumberOfAttendees}</h4>
 
     <button class="delete-jam__button" id="${jam.jamId}" value="${jam.jamId}">Delete Jam</button>                   
-    <button class="jam__edit_button" id="${jam.jamId.profileId}" value="${jam.jamId.profileId}">Edit Jam</button>   
+    <button class="jam__edit_button" id="${jam.jamId}" value="${jam.jamId}">Edit Jam</button>   
     <button class="jam__joinJam_button" id="${jam.jamId}">Join Jam</button>                
     </section>
     <h3>Attendees</h3>
