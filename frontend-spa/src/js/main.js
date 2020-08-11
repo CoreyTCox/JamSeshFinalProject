@@ -319,6 +319,7 @@ appDiv.addEventListener('click', function () {
     if (event.target.classList.contains('jam-details__button')) {
         console.log("jam details1")
         const jamId = event.target.parentElement.querySelector('.jam-details__button').id;
+        
         apiActions.getRequest(
             `https://localhost:44372/api/Jam/${jamId}`,
             jam => {
@@ -341,7 +342,6 @@ appDiv.addEventListener("click", function () {
         const jamId = event.target.parentElement.querySelector('.edit-jam__submit').id;
         console.log("the jam id is " + jamId);
 
-
         var requestBody = {
             name: jamName,
             location: jamLocation,
@@ -352,6 +352,7 @@ appDiv.addEventListener("click", function () {
             jamId: jamId
         }
         console.log(requestBody)
+        
 
         apiActions.putRequest(
             `https://localhost:44372/api/Jam/${jamId}`,
@@ -369,7 +370,9 @@ appDiv.addEventListener('click', function () {
     if (event.target.classList.contains('jam__edit_button')) {
         const jamId = event.target.parentElement.querySelector('.jam__edit_button').id;
         const profileId = document.querySelector('.nav__myprofile').id;
-        if (profileId == "0") {
+        //const jamProfileId = document.querySelector('jamProfile__name').id;
+        console.log("jamid is " + jamId + "profileId is " + profileId);
+        if (profileId == "0" || profileId != jamId) {
             window.alert("not logged in")
         }
         else {

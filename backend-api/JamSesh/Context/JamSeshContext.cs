@@ -108,6 +108,7 @@ namespace JamSesh.Context
             modelbuilder.Entity<Jam>().HasData(
             new Jam
             {
+                ProfileId = 1,
                 JamId = 1,
                 Name = "High Voltage Acoustic Rock",
                 Location = "333 Foundry St, Medina, OH 44256",
@@ -119,6 +120,7 @@ namespace JamSesh.Context
 
             new Jam
             {
+                ProfileId = 2,
                 JamId = 2,
                 Name = "Castle Noel Big Band",
                 Location = "260 S Court St, Medina, OH 44256",
@@ -130,6 +132,7 @@ namespace JamSesh.Context
 
             new Jam
             {
+                ProfileId = 3,
                 JamId = 3,
                 Name = "Church Lot Duet",
                 Location = "606 E Washington St, Medina, OH 44256",

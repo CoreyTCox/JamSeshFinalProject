@@ -9,6 +9,8 @@ namespace JamSesh.Models
 {
     public class Jam
     {
+        public int ProfileId { get; set; }
+
         public int JamId { get; set; }
         public string Name { get; set; }
         public string Location { get; set; }
