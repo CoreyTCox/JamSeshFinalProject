@@ -4,14 +4,16 @@ using JamSesh.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JamSesh.Migrations
 {
     [DbContext(typeof(JamSeshContext))]
-    partial class JamSeshContextModelSnapshot : ModelSnapshot
+    [Migration("20200804152339_passwordmigration")]
+    partial class passwordmigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,38 +55,11 @@ namespace JamSesh.Migrations
                         {
                             JamId = 1,
                             Description = "Need 2 more people to play some 80s Rock at Edgewater Park. Could use vocals and bass/guitar.",
-
-                            EventDate = new DateTime(2020, 8, 12, 14, 9, 10, 419, DateTimeKind.Local).AddTicks(6365),
-                            Image = "High-Voltage-Acoustic-Rock.jpg",
-
-                            Location = "333 Foundry St, Medina, OH 44256",
+                            EventDate = new DateTime(2020, 8, 4, 11, 23, 37, 798, DateTimeKind.Local).AddTicks(5838),
+                            Image = "JamIcon.jpg",
+                            Location = "6500 Cleveland Memorial Shoreway, Cleveland, OH 44102",
                             MaxNumberOfAttendees = 3,
-                            Name = "High Voltage Acoustic Rock"
-                        },
-                        new
-                        {
-                            JamId = 2,
-                            Description = "I need a lot of people and a pretty decent range of intruments so we can meet at castle noel and play Duke Ellington and Count Basie songs.",
-
-                            EventDate = new DateTime(2020, 8, 12, 14, 9, 10, 427, DateTimeKind.Local).AddTicks(2707),
-                            Image = "Castle-Noel.jpg",
-
-
-                            Location = "260 S Court St, Medina, OH 44256",
-                            MaxNumberOfAttendees = 7,
-                            Name = "Castle Noel Big Band"
-                        },
-                        new
-                        {
-                            JamId = 3,
-                            Description = "I need a drummer to play along with me while I play acoustic guitar and sing. Looking to play some popular gospel standards at my church this Sunday!",
-
-                            EventDate = new DateTime(2020, 8, 12, 14, 9, 10, 427, DateTimeKind.Local).AddTicks(2885),
-                            Image = "Church.jpg",
-
-                            Location = "606 E Washington St, Medina, OH 44256",
-                            MaxNumberOfAttendees = 2,
-                            Name = "Church Lot Duet"
+                            Name = "Acoustic Rock in the Park"
                         });
                 });
 
@@ -124,9 +99,9 @@ namespace JamSesh.Migrations
                         {
                             ProfileId = 1,
                             Description = "New to the area, and I just want to get together with some people on the weekends to play some tunes",
-                            Image = "AvatarImage1.png",
+                            Image = "DefaultProfilePhoto.jpg",
                             Instruments = "Bass, Drums",
-                            Location = "North Olmsted, OH",
+                            Location = "26635 Brookpark Rd, North Olmsted, OH 44070",
                             Name = "Brandon",
                             Password = "Welcome"
                         },
@@ -134,9 +109,9 @@ namespace JamSesh.Migrations
                         {
                             ProfileId = 2,
                             Description = "I like playing jazz standards in small trios",
-                            Image = "AvatarImage2.png",
+                            Image = "DefaultProfilePhoto.jpg",
                             Instruments = "Keys, Acoustic Guitar, Vocals",
-                            Location = "Parma, OH",
+                            Location = "7705 W Ridgewood Dr, Parma, OH 44129",
                             Name = "Eddie",
                             Password = "Welcome"
                         },
@@ -144,9 +119,9 @@ namespace JamSesh.Migrations
                         {
                             ProfileId = 3,
                             Description = "I've got more instruments than just the ones I play. I'm usually available on the weekends. LET'S JAM",
-                            Image = "AvatarImage3.png",
+                            Image = "DefaultProfilePhoto.jpg",
                             Instruments = "Mandalin, Guitar, Bass, Drums",
-                            Location = "Brooklyn, OH",
+                            Location = "7415 Memphis Ave, Brooklyn, OH 44144",
                             Name = "Neil",
                             Password = "Welcome"
                         });
@@ -160,18 +135,14 @@ namespace JamSesh.Migrations
                     b.Property<int>("JamID")
                         .HasColumnType("int");
 
+                    b.Property<int>("ProfileJamID")
+                        .HasColumnType("int");
+
                     b.HasKey("ProfileID", "JamID");
 
                     b.HasIndex("JamID");
 
                     b.ToTable("ProfileJams");
-
-                    b.HasData(
-                        new
-                        {
-                            ProfileID = 1,
-                            JamID = 1
-                        });
                 });
 
             modelBuilder.Entity("JamSesh.Models.ProfileJam", b =>

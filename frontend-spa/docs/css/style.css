@@ -2,23 +2,35 @@ body {
 
     /* background-image: url(/images/background.jpg); */
   
-    background-size: cover;
+    /* background-size: cover; */
   
+    background-color: red;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   
     color: black;
   
     box-sizing: border-box;
-  
-    /* background-color: #333333; */
+    margin: 2em 290px 0;
+    min-width: 500px;
+    max-width: 700px;
+    width: auto;
+    align-content: center;
+    /* border-left: 4px solid;
+    border-right: 4px solid;
+    border-bottom: 4px solid; */
   
   }
   
+  #JamSeshApp {
+    background-color: white;
+    padding: 2em;
+  }
    
-  .workout-collection {
+  .info-collection {
     margin: 1em 0;
   }
-  .workout-style {
+
+  .info-details {
   
     display: grid;
   
@@ -32,7 +44,7 @@ body {
   
     font-family: Arial, Helvetica, sans-serif;
 
-    border: 4px solid;
+    border: 5px solid;
     
     padding: 1em;
   
@@ -62,70 +74,104 @@ body {
   
   }
   
-   
+   #JamDetails {
+     display: flex;
+     flex-direction: row;
+   }
   
+   #AttendeesList {
+   }
+
   .navbar {
-  
+    
     width: 100%;
-  
+    
     background-color: #555;
-  
+    
     overflow: auto;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    z-index: 200;
   
   }
   
-   
+  .navbar a:nth-of-type(1) {
+    flex-grow: 1;
+  }
+
+  .navbar a:nth-of-type(2) {
+    flex-grow: 1;
+  }
   
-  /* Navigation links */
-  
-   
+  .navbar a:nth-of-type(3) {
+    flex-grow: 1;
+  }
+
+  .navbar img {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    padding: 2px 0;
+    margin-left: 0;
+    margin-right: 0;
+    border: 4px solid;
+    opacity: .9;
+    flex-grow: .5;
+  }
+
+  .navbar img:hover {
+    opacity: .6;
+  }
   
   .navbar a {
   
-    float: left;
-  
-    padding: 12px;
-  
+    /* float: left; */
+    
+    /* padding: 0; */
+    
     color: white;
-  
+    
     text-decoration: none;
-  
+    
     font-size: 17px;
-  
-    width: 25%;
-  
+    
+    width: 10%;
+    
     text-align: center;
-  
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
   }
-  
-   
-  
-  /* Add a background color on mouse-over */
-  
-   
+
   
   .navbar a:hover {
-  
+    
     background-color: #000;
-  
+    color: red;
+    
   }
-  
-   
-  
-  /* Style the current/active link */
-  
-   
   
   .navbar a.active {
-  
+    
     background-color: #4CAF50;
-  
+    
   }
-  
-   
+
+  #map {
+    border: 2px solid;
+    margin-top: 1em;
+  } 
   
   button {
-  
+    
     font-family: Helvetica, Arial, sans-serif;
   
     font-size: 11px;
@@ -139,7 +185,149 @@ body {
     margin: 0 10px;
   
     text-decoration: none;
-  
     
-  
   }
+
+  footer a{
+    position: fixed;
+    right: 175px;
+    bottom: 0;
+    text-decoration: none;
+    padding: .5em;
+    background-color: #333333;
+    color: white;
+    border: 3px solid black;
+  }
+
+  footer a:hover {
+    background-color: black;
+    color: red;
+  }
+
+  .add-jam img {
+    position: fixed;
+    left: 222px;
+    bottom: 0;
+    background-color: #333333;
+    border: 3px solid;
+    padding: 10px;
+  }
+
+  .add-jam img:hover {
+    background-color: white;
+  }
+
+  .add-profile img {
+    position: fixed;
+    left: 222px;
+    bottom: 0;
+    background-color: #333333;
+    border: 3px solid;
+    padding: 10px;
+  }
+
+  .add-profile img:hover {
+    background-color: white;
+  }
+
+  .delete-jam img {
+    position: fixed;
+    left: 222px;
+    bottom: 0;
+    background-color: #333333;
+    border: 3px solid;
+    padding: 10px;
+  }
+
+  .delete-jam img:hover {
+    background-color: red;
+  }
+
+  .delete-profile img {
+    position: fixed;
+    left: 222px;
+    bottom: 0;
+    background-color: #333333;
+    border: 3px solid;
+    padding: 10px;
+  }
+
+  .delete-profile img:hover {
+    background-color: red;
+  }
+
+  .edit-profile img {
+    position: fixed;
+    left: 222px;
+    bottom: 80px;
+    background-color: #333333;
+    border: 3px solid;
+    padding: 10px;
+  }
+
+  .edit-profile img:hover {
+    background-color: white;
+  }
+
+  .edit-jam img {
+    position: fixed;
+    left: 222px;
+    bottom: 80px;
+    background-color: #333333;
+    border: 3px solid;
+    padding: 10px;
+  }
+
+  .edit-jam img:hover {
+    background-color: white;
+  }
+
+#leftImage {
+  position: fixed;
+  left: 10px;
+  bottom: 80px;
+}
+#rightImage {
+  position: fixed;
+  right: 10px;
+  bottom: 70px;
+}
+
+.Logon {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.logon-profile__submit{
+  font-size: 1.5em;
+  padding: .5em;
+  background-color: #333333;
+  color: white;
+  border: 3px solid black;
+}
+
+.logon-profile__submit:hover {
+  background-color: black;
+  color: red;
+}
+
+.continue-as-guest{
+  font-size: 1.5em;
+  padding: .5em;
+  background-color: #333333;
+  color: white;
+  border: 3px solid black;
+}
+
+.continue-as-guest:hover {
+  background-color: black;
+  color: #333333;
+}
+
+#signIn {
+  color: red;
+}
+
+#continue {
+  color: #333333;
+}

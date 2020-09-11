@@ -37,6 +37,24 @@ namespace JamSesh.Controllers
             return profile;
         }
 
+        // GET: api/Profile/jay
+        [HttpGet("{userName}/{password}")]
+        public Profile Get(string userName, string password)
+        {
+            string valueInspector = userName + '\t' + password;
+            Profile profile = profileRepo.GetAll().FirstOrDefault(x => x.Name == userName && x.Password == password);
+            if (profile == null)
+            {
+                profile = new Profile();
+                profile.Name = "invalid logon";
+                profile.ProfileId = 100;
+
+
+            }
+
+            return profile;
+        }
+
         // POST: api/Profile
         [HttpPost]
         public IEnumerable<Profile> Post([FromBody] Profile value)
@@ -47,10 +65,10 @@ namespace JamSesh.Controllers
 
         // PUT: api/Profile/5
         [HttpPut("{id}")]
-        public IEnumerable<Profile> Put([FromBody] Profile value)
+        public Profile Put([FromBody] Profile value)
         {
             profileRepo.Update(value);
-            return profileRepo.GetAll();
+            return profileRepo.GetById(value.ProfileId);
         }
 
         // DELETE: api/ApiWithActions/5

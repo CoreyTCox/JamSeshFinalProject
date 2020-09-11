@@ -9,7 +9,7 @@ namespace JamSesh.Models
 {
     public class Jam
     {
-        public int Id { get; set; }
+        public int JamId { get; set; }
         public string Name { get; set; }
         public string Location { get; set; }
         public string Description { get; set; }
@@ -17,12 +17,7 @@ namespace JamSesh.Models
         public int MaxNumberOfAttendees { get; set; }
         public string Image { get; set; }
 
-        public virtual JamAttendees Attendees { get; set; }
-
-        public int ProfileId { get; set; }
-
-        [JsonIgnore]
-        public virtual Profile CreatorProfile { get; set; }
+        public virtual IList<ProfileJam> JamsAttending { get; set; }
 
     }
 }
